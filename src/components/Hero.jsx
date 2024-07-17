@@ -4,11 +4,11 @@ import { heroVideo, smallHeroVideo } from "../utils"
 import { useEffect, useState } from "react"
 
 const Hero = () => {
-  const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
+  const [videoSrc, setVideoSrc] = useState(window.innerWidth < 640 ? smallHeroVideo : heroVideo)
 
   const handleVideoSrcSet = () => {
-    if(window.innerWidth < 760) {setVideoSrc(smallHeroVideo)} else {setVideoSrc(heroVideo)}
-  }
+    if(window.innerWidth < 640) {setVideoSrc(smallHeroVideo)} else {setVideoSrc(heroVideo)}
+  };
 
   useEffect(() => {
     window.addEventListener('resize', handleVideoSrcSet);
@@ -31,12 +31,12 @@ const Hero = () => {
         <video src={videoSrc} type="video/mp4" autoPlay muted playsInline={true} key={videoSrc} className="pointer-events-none" />
       </div>
     </div>
-    <div id="cta" className="flex flex-col items-center opacity-0 translate-y-20">
+    <div id="cta" className="flex flex-col items-center mt-5 opacity-0 translate-y-20">
       <a href="#Highlights" className="btn">Buy</a>
       <p className="font-normal text-xl">From $199/month or $999</p>
     </div>
   </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
